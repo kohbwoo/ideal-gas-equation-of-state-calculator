@@ -1,19 +1,18 @@
 //2019-06-14 부터 제작...
 #include <stdio.h>
 #include <windows.h>
-double R = 0.082006;
-double P, V, n, T;
+double R = 0.082; //기체상수 전역변
+double P, V, n, T; //기압 부피 몰수 온도
 char find;
-void P_calculator();
-void V_calculator();
-void n_calculator();
-void R_calculator();
-void T_calculator();
+void P_calculator(); //기압 계산기
+void V_calculator(); //부피 계산기
+void n_calculator(); //분자 수 계산기
+void R_calculator(); //기체상수 계산기
+void T_calculator(); //온도 계산기
 
 int main(void)
 {
-	char A;
-
+	char A; //계산 할 내용 지정하기
 start:
 
 	printf("이상기체 상태방정식 계산기\n\n\n");
@@ -28,10 +27,7 @@ start:
 	printf("4\tT값 구하기\n\n");
 	printf("5\t기체상수 R 구하기\n\n");
 	scanf("%c", &A);
-
-	system("cls");
-
-
+	system("cls"); //화면 정리
 
 	if (A == '1') 
 		P_calculator();
@@ -43,14 +39,14 @@ start:
 		T_calculator();
 	else if (A == '5')
 		R_calculator();
-	else if (A == 'R'||'r') {
+	else if (A == 'R'|| A == 'r') {
 		printf("희망하시는 R값을 입력하세요:  ");
 		scanf("%lf", &R);
 		goto start;
 	}
-
 	else {
 		goto start;
+		printf("잘못된 입력입니다. 아래 항목중 선택하세요.\n");
 	}
 }
 
