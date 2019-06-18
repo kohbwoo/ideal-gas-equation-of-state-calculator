@@ -1,7 +1,7 @@
 //2019-06-14 부터 제작...
 #include <stdio.h>
 #include <windows.h>
-double R = 0.082; //기체상수 전역변
+double R = 0.082; //기체상수 전역변수
 double P, V, n, T; //기압 부피 몰수 온도
 char find;
 void P_calculator(); //기압 계산기
@@ -52,72 +52,72 @@ start:
 
 void P_calculator() { //미지수 P가 필요할때
 	printf("P(기압)을 계산합니다.\n");
-	printf("V값을 입력하시오:  ");
+	printf("V값을 입력하시오(단위 L):  ");
 	scanf("%lf", &V);
-	printf("\nn값을 입력하시오:  ");
+	printf("\nn값을 입력하시오(단위 mol):  ");
 	scanf("%lf", &n);
-	printf("\nT값을 입력하시오:  ");
+	printf("\nT값을 입력하시오(단위 K): ");
 	scanf("%lf", &T);
 
 	P = (n * R * T) / V;
-	printf("P값은 %lf 입니다.", P);
+	printf("P값은 %lfatm 입니다.", P);
 
 	return 0;
 
 }
 void V_calculator() { //미지수 V가 필요할때
 	printf("V(기압)을 계산합니다.\n");
-	printf("P값을 입력하시오:  ");
+	printf("P값을 입력하시오(단위 atm):  ");
 	scanf("%lf", &P);
-	printf("\nn값을 입력하시오:  ");
+	printf("\nn값을 입력하시오(단위 mol):  ");
 	scanf("%lf", &n);
-	printf("\nT값을 입력하시오:  ");
+	printf("\nT값을 입력하시오(단위 K):  ");
 	scanf("%lf", &T);
 
 	V = (n * R * T) / P;
-	printf("\nV값은 %lf 입니다.", V);
+	printf("\nV값은 %lfL 입니다.", V);
 
 	return 0;
 
 }
 void n_calculator() { //미지수 n이 필요할때
 	printf("n(몰수)값을 계산합니다.\n");
-	printf("P값을 입력하시오:  ");
+	printf("P값을 입력하시오(단위 atm):  ");
 	scanf("%lf", &P);
-	printf("\nV값을 입력하시오:  ");
+	printf("\nV값을 입력하시오(단위 L):  ");
 	scanf("%lf", &V);
-	printf("\nT값을 입력하시오:  ");
+	printf("\nT값을 입력하시오(단위 K):  ");
 	scanf("%lf", &T);
 
 	n = P * V / (R * T);
-	printf("\nn값은 %lf 입니다.", n);
+	printf("\nn값은 %lfmol 입니다.", n);
 
 	return 0;
 
 }
 void T_calculator() { //미지수 T가 필요할때
 	printf("T(기압)을 계산합니다.\n");
-	printf("P값을 입력하시오:  ");
+	printf("P값을 입력하시오(단위 atm):  ");
 	scanf("%lf", &P);
-	printf("\nV값을 입력하시오:  ");
+	printf("\nV값을 입력하시오(단위 L):  ");
 	scanf("%lf", &V);
-	printf("\nn값을 입력하시오:  ");
+	printf("\nn값을 입력하시오(단위 mol):  ");
 	scanf("%lf", &n);
 	T = P * V / (n * R);
-	printf("\nT값은 %lf 입니다.", T);
+	printf("\nT값은 %lfK 입니다.", T);
 
 	return 0;
 
 }
 void R_calculator() { //미지수 R이 필요할때
 	printf("r(기체상수)을 계산합니다.\n");
-	printf("P값을 입력하시오:  ");
+	printf("P값을 입력하시오(단위 atm):  ");
 	scanf("%lf", &P);
-	printf("\nV값을 입력하시오:  ");
+	printf("\nV값을 입력하시오(단위 L):  ");
 	scanf("%lf", &V);
-	printf("\nn값을 입력하시오:  ");
+	printf("\nn값을 입력하시오(단위 mol):  ");
 	scanf("%lf", &n);
-	printf("\nT값을 입력하시오:  ");
+	printf("\nT값을 입력하시오(단위 K):  ");
 	scanf("%lf", &T);
 	R = P * V / (n * T);
 	printf("\nR값은 %lf 입니다.", R);
