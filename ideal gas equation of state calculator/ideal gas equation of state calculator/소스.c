@@ -3,12 +3,13 @@
 #include <windows.h>
 double R = 0.082; //기체상수 전역변수
 double P, V, n, T; //기압 부피 몰수 온도
-char find;
 void P_calculator(); //기압 계산기
 void V_calculator(); //부피 계산기
 void n_calculator(); //분자 수 계산기
 void R_calculator(); //기체상수 계산기
 void T_calculator(); //온도 계산기
+char find;				//희망하는 계산 선택
+char setting;
 
 int main(void)
 {
@@ -17,8 +18,8 @@ start:
 
 	printf("이상기체 상태방정식 계산기\n\n\n");
 	printf("기체상수 R은 %lf 으로 계산됩니다.\n", R);
-	printf("R값을 수정하시려면R 을 입력해주세요\n");
-	printf("단위는 atm(기압), L(부피), mol(분자 수), K(온도)를 사용합니다.\n\n\n");
+	printf("단위는 atm(기압), L(부피), mol(분자 수), K(온도)를 사용합니다.\n");
+	printf("입, 출력 할 단위나 기체상수를 변경하시려면 계산기 설정에서 변경해주세요. \n\n\n");
 	printf("계산이 필요한 수식의 번호를 입력하세요.\n\n\n");
 	printf("번호\t방정식\n\n");
 	printf("1\tP값 구하기\n\n");
@@ -26,6 +27,7 @@ start:
 	printf("3\tn값 구하기\n\n");
 	printf("4\tT값 구하기\n\n");
 	printf("5\t기체상수 R 구하기\n\n");
+	printf("6\t계산기 설정\n\n");
 	scanf("%c", &A);
 	system("cls"); //화면 정리
 
@@ -39,14 +41,29 @@ start:
 		T_calculator();
 	else if (A == '5')
 		R_calculator();
-	else if (A == 'R'|| A == 'r') {
-		printf("희망하시는 R값을 입력하세요:  ");
-		scanf("%lf", &R);
-		goto start;
+
+	else if (A == '6') {
+	setting:
+		printf("다음중 수정하실 항목의 번호를 입력해주세요.\n\n\n");
+		printf("순번\t변수 혹은 단위\t 현재 값\n");
+		printf("1\t기체상수R\t%lf\n\n", R);
+		scanf("%c", &setting);
+		if (setting = 1) {
+			printf("희망하는 R(기체상수) 값을 입력하세요");
+			scanf("%lf", &R);
+			goto start;
+		}
+		else {
+			printf("잘못 된 접근입니다. 다음중 선택하세요.\n\n");
+			goto setting;
+		}
+		
+		
 	}
 	else {
-		goto start;
+
 		printf("잘못된 입력입니다. 아래 항목중 선택하세요.\n");
+		goto start;
 	}
 }
 
